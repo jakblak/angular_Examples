@@ -1,0 +1,68 @@
+<div class="container">
+    <h1>Welcome to the Home Component</h1>
+    <button type="button"
+                 class="btn btn-info btn-lg"
+                 (click)="loadCountries()">Load Countries</button>
+    <div class="table-responsive" *ngIf="countries" style="margin-top: 10px">
+      <div class="row filterBy">
+        <button class="btn btn-default"
+                     [class.active]="filterBy==='all'"
+                     (click)="filterBy('all')">
+             All Countries
+        </button>
+        <button class="btn btn-default"
+                     [class.active]="filterBy==='europe'"
+                     (click)="filterBy('europe')">
+             European Countries
+        </button>
+        <button class="btn btn-default"
+                     [class.active]="filterBy==='pop'"
+                     (click)="filterBy('pop')">
+             Population > 1M
+        </button>
+        <button class="btn btn-default"
+                     (click)="sortType('name')"
+                     [class.active]="sortType==='name'">
+             Sort by Name
+        </button>
+      </div>
+    <table class="table table-bordered table-striped table-hover table-fixed-header">
+      <thead class="header">
+        <tr>
+          <th class="text-center">
+          <a>
+              Name
+            </a>
+          </th>
+          <th class="text-center">
+            Country Code
+              </th>
+          <th class="text-center">
+            Capital
+          </th>
+          <th class="text-center">
+            Area (km2)
+          </th>
+          <th class="text-center">
+            Population
+          </th>
+          <th class="text-center">
+          Continent
+          </th>
+        </tr>
+      </thead>
+      <tbody class="searchable">
+          <tr *ngFor="let country of countries">
+          <td>
+          {{ country.countryName }}
+          </td>
+          <td>{{ country.countryCode }}</td>
+          <td>{{ country.capital }}</td>
+          <td>{{ country.areaInSqKm | number:0 }}</td>
+          <td>{{ country.population | number:0 }}</td>
+          <td>{{ country.continentName }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
