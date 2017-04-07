@@ -1,0 +1,84 @@
+<div class="container">
+    <h1>Welcome to the Home Component</h1>
+    <button type="button"
+                 class="btn btn-info btn-lg"
+                 (click)="loadCountries()">Load Countries</button>
+    <div class="table-responsive" *ngIf="countries" style="margin-top: 10px">
+      <div class="row filterBy">
+        <button class="btn btn-default"
+                     [class.active]="filterBy==='all'"
+                     (click)="filterBy('all')">
+             All Countries
+        </button>
+        <button class="btn btn-default"
+                     [class.active]="filterBy==='europe'"
+                     (click)="filterBy('europe')">
+             European Countries
+        </button>
+        <button class="btn btn-default"
+                     [class.active]="filterBy==='pop'"
+                     (click)="filterBy('pop')">
+             Population > 1M
+        </button>
+        <button class="btn btn-default"
+                     (click)="sortType('name')"
+                     [class.active]="sortBy === 'name'">
+             Sort by Name
+        </button>
+      </div>
+    <table class="table table-bordered table-striped table-hover table-fixed-header">
+      <thead class="header">
+        <tr>
+          <th class="text-center">
+<!--             <a href="#" ng-click="sortType = 'countryName'; sortReverse = !sortReverse"> -->
+          <a href="#" (click)="sortType('name')" [class.active]="sortBy === 'name'">
+              Name
+            </a>
+<!--           <span ng-show="sortType == 'countryName'" ng-class="{'fa fa-caret-down': !sortReverse, 'fa fa-caret-up': sortReverse}"></span></a> -->
+          </th>
+          <th class="text-center">
+<!--             <a href="#" ng-click="sortType = 'countryCode'; sortReverse = !sortReverse"> -->
+            Country Code
+<!--           <span ng-show="sortType == 'countryCode'" ng-class="{'fa fa-caret-down': !sortReverse, 'fa fa-caret-up': sortReverse}"></span></a> -->
+              </th>
+          <th class="text-center">
+<!--             <a href="#" ng-click="sortType = 'capital'; sortReverse = !sortReverse"> -->
+            Capital
+<!--           <span ng-show="sortType == 'capital'" ng-class="{'fa fa-caret-down': !sortReverse, 'fa fa-caret-up': sortReverse}"></span></a> -->
+          </th>
+          <th class="text-center">
+<!--             <a href="#" ng-click="sortType = 'areaInSqKm'; sortReverse = !sortReverse"> -->
+            Area (km2)
+<!--           <span ng-show="sortType == 'areaInSqKm'" ng-class="{'fa fa-caret-down': !sortReverse, 'fa fa-caret-up': sortReverse}"></span></a> -->
+          </th>
+          <th class="text-center">
+            <a href="#" (click)="sortType('pop')" [class.active]="sortBy === 'pop'">
+            Population
+<!--           <span ng-show="sortType == 'population'" ng-class="{'fa fa-caret-down': !sortReverse, 'fa fa-caret-up': sortReverse}"></span></a> -->
+          </a>
+          </th>
+          <th class="text-center">
+<!--           <a href="#" ng-click="sortType = 'continentName'; sortReverse = !sortReverse"> -->
+          Continent
+<!--           <span ng-show="sortType == 'continentName'" ng-class="{'fa fa-caret-down': !sortReverse, 'fa fa-caret-up': sortReverse}"></span></a> -->
+          </th>
+        </tr>
+      </thead>
+      <tbody class="searchable">
+<!--         <tr ng-repeat="country in countries | orderBy:sortType:sortReverse | filter:searchCountries"> -->
+          <tr *ngFor="let country of countries">
+          <td>
+<!--           <a ng-href="/countries/{{ country.countryCode | uppercase }}"> -->
+          {{ country.countryName }}
+<!--           </a> -->
+          </td>
+          <td>{{ country.countryCode }}</td>
+          <td>{{ country.capital }}</td>
+          <td>{{ country.areaInSqKm | number:0 }}</td>
+          <td>{{ country.population | number:0 }}</td>
+          <td>{{ country.continentName }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

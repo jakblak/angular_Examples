@@ -1,0 +1,16 @@
+/* Navbar */
+.nav .navbar-nav {
+  font-size: 15px;
+}
+#searchForm {
+  margin-right: 100px;
+}
+@media (max-width: 1200px) {
+  #searchForm {
+    display: none;
+  }
+}
+.filterBy {
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
