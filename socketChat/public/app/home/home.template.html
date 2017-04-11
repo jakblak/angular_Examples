@@ -1,0 +1,52 @@
+<div class="container">
+    <h1>Welcome to the Home Component</h1>
+</div>
+
+<!-- ngSubmit, ngModel, ngFor -->
+<div class="container">
+  <div class="row chat-window col-xs-5 col-md-3">
+    <div class="col-xs-12 col-md-12">
+        <div class="panel">
+            <div class="panel-heading chat-top-bar">
+                <div class="col-md-8 col-xs-8">
+                    <h3 class="panel-title">Chat Box</h3>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="msg-container-base">
+                    <div class="row msg-container" *ngFor="let message of messages">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="chat-msg"
+                                    [ngClass]="{'chat-msg-sent': selfAuthored, 'chat-msg-recieved': !selfAuthored}">
+                                <img *ngIf="message.imageUrl"
+                                          class="profile"
+                                          [ngClass]="{'pull-right': selfAuthored, 'pull-left': !selfAuthored}"
+                                          [src]="message.imageUrl" />
+                                <p>{{ message.text }}</p>
+                                <div class="chat-msg-author">
+                                    <strong>{{ message.username }}</strong>&nbsp;
+                                    <span class="time">Sent at: {{ message.date | date: 'shortTime' }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-bottom-bar">
+                    <form style="display:inherit" (ngSubmit)="sendMessage()">
+                        <div class="input-group" >
+                            <input type="text"
+                                      class="form-control input-sm chat-input"
+                                      placeholder="Enter message"
+                                      name= "messageText"
+                                      [(ngModel)]="messageText" />
+                            <span class="input-group-btn">
+                            <input type="submit" class="btn btn-sm chat-submit-button" />
+                        </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+     </div>
+  </div>
+</div>
