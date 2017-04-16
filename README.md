@@ -9,13 +9,13 @@
 - use `npm start` to load up the app
 - if `socketChat` install modules in *public* folder as well
 
-### **filter** branch ###
+### filter ###
 - part 1 of Geonames project + filter example
 
-### **socketChat** branch ###
+### socketChat ###
 - build chat app using Angular and Node
 - make sure to install modules in both root and public folders
 - start the app with node server.js and navigate to localhost:8000
 
-### **sort** branch ###
+### sort ###
 - part 2 of Geonames project + sort example
